@@ -1,0 +1,19 @@
+{
+  "name": "epytodo",
+  "version": "1.0.0",
+  "description": "\"app epytodo\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpitechIT2020/B-WEB-200-REN-2-1-epytodo-alexis.camara.git"
+  },
+  "author": "Alexis Camara Jean-Vincent Amalfitano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EpitechIT2020/B-WEB-200-REN-2-1-epytodo-alexis.camara/issues"
+  },
+  "homepage": "https://github.com/EpitechIT2020/B-WEB-200-REN-2-1-epytodo-alexis.camara#readme"
+}
