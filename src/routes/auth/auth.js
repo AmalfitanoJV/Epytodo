@@ -1,6 +1,3 @@
-const mysql = require('mysql2');
-const routeur = require('express').Router();
-
 const register = async (req, res) => {
     return res.send("register\n");
 }
