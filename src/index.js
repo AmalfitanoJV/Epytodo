@@ -4,7 +4,9 @@ const express = require('express');
 const routeur = express;
 const mysql = require('mysql2');
 const app = express();
+const bodyParser = require("body-parser");
 
+app.use(bodyParser.json());
 app.use("/", require('./restapi'));
 
 app.listen(process.env.PORT, () => {
