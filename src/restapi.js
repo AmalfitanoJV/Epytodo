@@ -3,8 +3,8 @@ const authservice = require('./routes/auth/auth');
 const todoservice = require('./routes/todos/todos');
 const userservice = require('./routes/user/user');
 
-routeur.get("/login", authservice.login);
-routeur.get("/register", authservice.register);
+routeur.post("/login", authservice.login);
+routeur.post("/register", authservice.register);
 
 routeur.get("/todo", todoservice.view_all);
 routeur.get("/todo/:id", todoservice.view_user);
