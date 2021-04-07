@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 
 const register = async (req, res) => {
 
-    var token = jwt.sign({ "email": "value", "name": "value", "firstnam": "value", "password": "value"}, process.env.SECRET);
+    var token = jwt.sign({ "email": "value", "name": "value", "firstname": "value", "password": "value"}, process.env.SECRET);
     console.log(process.env.SECRET);
     return res.json({ "token": token});
 }
