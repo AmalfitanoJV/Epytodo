@@ -4,6 +4,10 @@ const todoservice = require('./routes/todos/todos');
 const userservice = require('./routes/user/user');
 const auth_middleware = require('./middleware/auth');
 
+routeur.get("/", (req, res) =>{
+    res.json({ message: "Welcome on the Epytodo app !"});
+})
+
 routeur.post("/login", authservice.login);
 routeur.post("/register", authservice.register);
 routeur.use(auth_middleware.auth_middleware);

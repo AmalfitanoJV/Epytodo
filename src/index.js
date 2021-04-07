@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use("/", require('./restapi'));
 
 app.listen(process.env.PORT, () => {
