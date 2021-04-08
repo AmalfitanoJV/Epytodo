@@ -2,14 +2,14 @@ const mysql = require("mysql");
 require('dotenv').config();
 
 const connection = mysql.creatConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASS,
-    database: process.env.DATABASE,
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASS,
+    database: process.env.MYSQL_DATABASE,
 });
 
 connection.connect(error => {
-    if  (error) throw error;
+    // if  (error) throw error;
     console.log("Database connected.");
 });
 
