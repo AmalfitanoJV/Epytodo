@@ -23,4 +23,6 @@ async function tableservice(req, res, next) {
     );
     res.send("ok mec");
 };
-module.exports = connection;
+module.exports = {
+    connection
+};

@@ -3,7 +3,7 @@ const db = require("../../config/db");
 const User = function(user) {
     this.email = user.email;
     this.name = user.name;
-    this.active = user.avtive;
+    this.active = user.active;
 };
 
 const all_users_info = async (req, res) => {

@@ -1,22 +1,21 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const db = require("../../config/db");
+const db = require("../../config/db").connection;
 var bodyParser = require('body-parser');
 
 const register = async (req, res) => {
 
     var token = jwt.sign({ "email": "value", "name": "value", "firstname": "value", "password": "value"}, process.env.SECRET);
-    db.query = ("INSERT INTO user SET ?", req.name, (err, res) => {
+    db.query ("INSERT INTO user (email, password, name, firstname) VALUES (?, ?, ?, ?)", [email, password, name, firstname], (err, rows, fields) => {
         if (err) {
-            console.log("error:", err);
-            result(err, null);
-            return;
+            console.log(err.toString());
+            res.status(500).send({msg : " internal server error "});
+        } else {
+            console.log("user create; ", rows[0].name);
+            console.log(process.env.SECRET);
+            res.json({ "token": token});
         }
-        console.log("user create; ", req.name);
-        result(null ,{id: res.insertId});
     });
-    console.log(process.env.SECRET);
-    return res.json({ "token": token});
 };
 
 const login = async (req, res) => {
