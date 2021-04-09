@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS epytodo;
 CREATE DATABASE epytodo;
 use epytodo;
 CREATE TABLE user(
-    id INT NOT NULL AUTO_INCREMENT DEFAULT 1,
+    id INT NOT NULL AUTO_INCREMENT,
     email varchar(255) NOT NULL UNIQUE,
     password varchar(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -18,4 +18,3 @@ CREATE TABLE todos(
     user_id INT NOT NULL,
     status ENUM('not started', 'todo', 'in progress', 'done') DEFAULT 'not started',
     primary key (id));
-INSERT INTO user ()
