@@ -14,13 +14,17 @@ const user_info = async (req, res) => {
 
 const user_delete = async (req, res) => {
 
-    db.query ("DELETE FROM user WHERE id = ?"), [req.params.id], (err, res) => {
+    db.query("DELETE FROM user WHERE id = ?", [req.params.id], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
+            res.status(500).send("ERR");
         } else {
             console.log("user id is " + req.params.id + " deleted");
+            console.log(rows);
+            console.log(fields);
+            res.status(200).send("OK");
         }
-    };
+    });
 }
 
 module.exports = {
