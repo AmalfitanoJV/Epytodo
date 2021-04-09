@@ -8,21 +8,6 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE
 });
 
-async function tableservice(req, res, next) {
-    connection.execute(
-        'SELECT * `client` WHERE `nom` = ?',
-        ['Rick C-137'],
-        function(err, results, fields) {
-            if (err) {
-                console.log(err.toString());
-            } else {
-                console.log(results);
-                console.log(fields);
-            }
-        }
-    );
-    res.send("ok mec");
-};
 module.exports = {
     connection
 };
