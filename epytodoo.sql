@@ -1,4 +1,5 @@
-create database epytodo;
+DROP DATABASE epytodo;
+CREATE DATATBASE epytodo;
 use epytodo;
 CREATE TABLE users
 (
