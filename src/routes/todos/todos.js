@@ -38,6 +38,15 @@ const todo_update = async (req, res) => {
     const status = req.body.status;
     const id = req.body.id;
 
+    if (status = "todo") {
+        status = 1;
+    }
+    else if (status = "in progress") {
+        status = 2;
+    }
+    else if (status = "done") {
+        status = 3;
+    }
     db.query("UPDATE todo SET title = ?, description = ?, due_time = ?, status = ? WHERE id = ?", [title,description, due_time, status, id], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
