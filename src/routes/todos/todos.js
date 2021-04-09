@@ -11,14 +11,12 @@ const view_user = async (req, res) => {
     return res.send("view_user\n");
 }
 
-const todo = async (req, res) => {
+const todopost = async (req, res) => {
     const user_id = req.body.user_id;
     const description = req.body.description;
     const title = req.body.title;
     const due_time = req.body.due_time;
     const status = req.body.status;
-
-    console.log(`User $}`);
 
     db.query("INSERT INTO todos (title, description, due_time, user_id, status) VALUES (?, ?, ?, ?, ?)", [title, description, due_time, user_id, status], (err, rows, fields) => {
         if (err) {
@@ -35,5 +33,5 @@ const todo = async (req, res) => {
 module.exports = {
     view_all,
     view_user,
-    todo
+    todopost
 }

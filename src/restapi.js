@@ -10,7 +10,7 @@ routeur.get("/", (req, res) =>{
 
 routeur.post("/login", authservice.login);
 routeur.post("/register", authservice.register);
-routeur.post("/todo", todoservice.todo);
+routeur.post("/todo", todoservice.todopost);
 
 routeur.use(auth_middleware.auth_middleware);
 
