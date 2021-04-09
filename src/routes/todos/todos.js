@@ -32,20 +32,20 @@ const todo_view = async (req, res) => {
 };
 
 const todo_update = async (req, res) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    const due_time =req.body.due_time;
-    const status = req.body.status;
-    const id = req.body.id;
+    var title = req.body.title;
+    var description = req.body.description;
+    var due_time =req.body.due_time;
+    var status = req.body.status;
+    var id = req.body.id;
 
-    if (status = "todo") {
-        status = 1;
-    }
-    else if (status = "in progress") {
+    if (status == "todo") {
         status = 2;
     }
-    else if (status = "done") {
+    else if (status == "in progress") {
         status = 3;
+    }
+    else if (status == "done") {
+        status = 4;
     }
     db.query("UPDATE todo SET title = ?, description = ?, due_time = ?, status = ? WHERE id = ?", [title,description, due_time, status, id], (err, rows, fields) => {
         if (err) {
