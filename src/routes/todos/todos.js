@@ -26,7 +26,7 @@ const todo_view = async (req, res) => {
 }
 
 const todo_update = async (req, res) => {
-    const id = req.body.id;
+    const title = req.body.title;
     const description = req.body.user.description;
     const due_time =req.body.due_time;
     const status = req.body.status;
