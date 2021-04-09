@@ -17,11 +17,9 @@ const user_delete = async (req, res) => {
     db.query("DELETE FROM user WHERE id = ?", [req.params.id], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
-            res.status(500).send("ERR");
+            res.status(500).send("Error: for the delete");
         } else {
             console.log("user id is " + req.params.id + " deleted");
-            console.log(rows);
-            console.log(fields);
             res.status(200).send("OK");
         }
     });
