@@ -1,3 +1,6 @@
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
+const db = require("../../config/db").connection;
 const { decodeBase64 } = require("bcryptjs");
 
 const view_all = async (req, res) => {
