@@ -4,17 +4,22 @@ const db = require("../../config/db").connection;
 const { decodeBase64 } = require("bcryptjs");
 
 const view_all = async (req, res) => {
-    return res.send("view_all\n");
-}
-
-const view_user = async (req, res) => {
-    return res.send("view_user\n");
-}
+    db.query("SELECT * FROM todo", (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "view todos" + err});
+        } else {
+            console.log(fields);
+            console.log(rows);
+            console.log(process.env.SECRET);
+        }   
+    });
+};
 
 const todo_view = async (req, res) => {
     const id = req.body.id
     
-    db.query("SELECT id = ? from todo", [id] , (err, rows, fields) => {
+    db.query("SELECT id = ? from todo", [id], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
             res.status(500).send({msg : "updating" + err});
@@ -23,8 +28,8 @@ const todo_view = async (req, res) => {
             console.log(rows);
             console.log(process.env.SECRET);
         }   
-    })
-}
+    });
+};
 
 const todo_update = async (req, res) => {
     const title = req.body.title;
@@ -62,7 +67,7 @@ const todopost = async (req, res) => {
             console.log(process.env.SECRET);
         }
     });
-}
+};
 
 const tododel = async (req, res) => {
     db.query("DELETE FROM todo WHERE id = ?", [req.params.id], (err, rows, fields) => {
@@ -76,11 +81,11 @@ const tododel = async (req, res) => {
         }
     });
 
-}
+};
 
 module.exports = {
     view_all,
-    view_user,
+    todo_view,
     todopost,
     tododel,
     todo_update
