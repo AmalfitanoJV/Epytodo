@@ -11,6 +11,10 @@ const view_user = async (req, res) => {
     return res.send("view_user\n");
 }
 
+const todo_view = async (req, res) => {
+    
+}
+
 const todo_update = async (req, res) => {
     const id = req.body.id;
     const description = req.body.user.description;
