@@ -15,7 +15,7 @@ routeur.post("/todo", todoservice.todopost);
 routeur.use(auth_middleware.auth_middleware);
 
 routeur.get("/todo", todoservice.view_all);
-routeur.get("/todo/:id", todoservice.view_user);
+routeur.get("/todo/:id", todoservice.todo_view);
 routeur.get("/user", userservice.all_users_info);
 routeur.get("/user/:id", userservice.user_info);
 routeur.get("/user/:email", userservice.user_info);

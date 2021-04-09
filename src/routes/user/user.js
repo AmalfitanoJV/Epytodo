@@ -9,7 +9,18 @@ const user_todo = async (req, res) => {
 }
 
 const user_info = async (req, res) => {
-    return res.send("user_info\n");
+    const email = req.body.email;
+
+    db.query("SELECT email = ? FROM user", [email], (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "user view" + err});
+        } else {
+            console.log(fields);
+            console.log(rows);
+            console.log(process.env.SECRET);
+        } 
+    });
 }
 
 const user_delete = async (req, res) => {
