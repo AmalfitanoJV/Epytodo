@@ -32,7 +32,7 @@ const todo_update = async (req, res) => {
     const status = req.body.status;
     const id = req.body.id;
 
-    db.query("UPDATE todo SET title = ?,description = ?, due_time = ?, status = ? WHERE id = ?", [title,description, due_time, status, id], (err, rows, fields) => {
+    db.query("UPDATE todo SET (title, description, due_time, status) VALUES (?, ?, ?, ?) WHERE id = ?", [title,description, due_time, status, id], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
             res.status(500).send({msg : "updating" + err});
