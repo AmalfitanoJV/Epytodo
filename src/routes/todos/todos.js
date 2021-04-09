@@ -12,7 +12,17 @@ const view_user = async (req, res) => {
 }
 
 const todo_view = async (req, res) => {
-    
+    const id = req.body.id
+    db.query("SELECT * WHERE id = ?", [id] , (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "updating" + err});
+        } else {
+            console.log(fields);
+            console.log(rows);
+            console.log(process.env.SECRET);
+        }   
+    })
 }
 
 const todo_update = async (req, res) => {
