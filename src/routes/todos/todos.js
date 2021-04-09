@@ -30,8 +30,23 @@ const todopost = async (req, res) => {
     });
 }
 
+const tododel = async (req, res) => {
+    db.query("DELETE FROM todos WHERE id = ?", [req.params.id], (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "delete " + err});
+        } else {
+            console.log(fields);
+            console.log(rows);
+            console.log(process.env.SECRET);
+        }
+    });
+
+}
+
 module.exports = {
     view_all,
     view_user,
-    todopost
+    todopost,
+    tododel
 }

@@ -23,5 +23,5 @@ routeur.get("/user/todo", userservice.user_todo);
 
 //delete data
 routeur.delete("/user/:id", userservice.user_delete);
-
+routeur.delete("/todo/:id", todoservice.tododel);
 module.exports = routeur;
