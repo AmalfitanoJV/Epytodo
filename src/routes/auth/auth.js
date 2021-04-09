@@ -24,8 +24,20 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    return res.send("login\n");
-}
+    const email = req.body.email;
+    const password = req.body.password;
+    
+    db.query ("SELECT * FROM user", [email, password], (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : " internal server error " + err});
+        } else if (rows[0].password == req.body.password) {
+            res.status(200).send({msg : "Token of the newly logged in user"});
+        }else{
+            res.status(200).send({msg : "INVALID CREDENTIAL"});
+        }
+    });
+};
 
 module.exports = {
     register,
