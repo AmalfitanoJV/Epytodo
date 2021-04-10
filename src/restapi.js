@@ -26,4 +26,6 @@ routeur.delete("/user/:id", userservice.user_delete);
 routeur.delete("/todo/:id", todoservice.tododel);
 
 routeur.put("/todo/:id", todoservice.todo_update);
+routeur.put("/user/:id", userservice.user_update);
+
 module.exports = routeur;

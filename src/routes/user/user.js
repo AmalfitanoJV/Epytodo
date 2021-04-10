@@ -8,6 +8,25 @@ const user_todo = async (req, res) => {
     return res.send("user_todo\n");
 }
 
+const user_update = async (req, res) => {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var firstname = req.body.firstname;
+    var name = req.body.name;
+
+    db.query("UPDATE user SET email = ?, password = ?, firstname = ?, name = ? WHERE id = ?", [email, password, firstname, name,id], (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "user updating failed" + err});
+        } else {
+            console.log(fields);
+            console.log(rows);
+            console.log(process.env.SECRET);
+        }
+    });
+};
+
 const user_info = async (req, res) => {
     const email = req.body.email;
 
@@ -40,5 +59,6 @@ module.exports = {
     all_users_info,
     user_todo,
     user_info,
-    user_delete
+    user_delete,
+    user_update
 }
