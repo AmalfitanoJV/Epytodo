@@ -13,7 +13,7 @@ const user_update = async (req, res) => {
     var password = req.body.password;
     var firstname = req.body.firstname;
     var name = req.body.name;
-    var id = req.body.id;
+    var id = req.params.id;
 
     db.query("UPDATE user SET email = ?, password = ?, firstname = ?, name = ? WHERE id = ?", [email, password, firstname, name,id], (err, rows, fields) => {
         if (err) {
