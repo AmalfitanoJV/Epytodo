@@ -22,7 +22,7 @@ const user_update = async (req, res) => {
         } else {
             console.log(fields);
             console.log(rows);
-            console.log(process.env.SECRET);
+            console.log(process.env.SECRET);//so6
         }
     });
 };
