@@ -28,8 +28,6 @@ const user_update = async (req, res) => {
 };
 
 const user_info = async (req, res) => {
-    const email = req.body.email;
-
     db.query("SELECT email = ? FROM user", [req.params.email], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
