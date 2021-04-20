@@ -9,7 +9,7 @@ CREATE TABLE user(
     firstname varchar(100) NOT NULL,
     name varchar(100) NOT NULL,
     primary key (id));
-CREATE TABLE todos(
+CREATE TABLE todo(
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,

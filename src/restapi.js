@@ -10,13 +10,22 @@ routeur.get("/", (req, res) =>{
 
 routeur.post("/login", authservice.login);
 routeur.post("/register", authservice.register);
+routeur.post("/todo", todoservice.todopost);
+
 routeur.use(auth_middleware.auth_middleware);
 
 routeur.get("/todo", todoservice.view_all);
-routeur.get("/todo/:id", todoservice.view_user);
-
+routeur.get("/todo/:id", todoservice.todo_view);
 routeur.get("/user", userservice.all_users_info);
-routeur.get("/user/:id" || "/user/:email", userservice.user_info);
+routeur.get("/user/:id", userservice.user_info);
+routeur.get("/user/:email", userservice.user_info);
 routeur.get("/user/todo", userservice.user_todo);
+
+//delete data
+routeur.delete("/user/:id", userservice.user_delete);
+routeur.delete("/todo/:id", todoservice.tododel);
+
+routeur.put("/todo/:id", todoservice.todo_update);
+routeur.put("/user/:id", userservice.user_update);
 
 module.exports = routeur;
