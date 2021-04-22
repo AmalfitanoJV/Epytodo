@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const db = require("../../config/db").connection;
 const { decodeBase64 } = require("bcryptjs");
 
-const view_all = async (req, res) => {
+const todo_view_all = async (req, res) => {
     db.query("SELECT * from todo", (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
@@ -55,7 +55,7 @@ const todo_update = async (req, res) => {
     });
 };
 
-const todopost = async (req, res) => {
+const todo_create = async (req, res) => {
     const user_id = req.body.user_id;
     const description = req.body.description;
     const title = req.body.title;
@@ -73,7 +73,7 @@ const todopost = async (req, res) => {
     });
 };
 
-const tododel = async (req, res) => {
+const todo_delete = async (req, res) => {
     db.query("DELETE FROM todo WHERE id = ?", [req.params.id], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
@@ -87,9 +87,9 @@ const tododel = async (req, res) => {
 };
 
 module.exports = {
-    view_all,
+    todo_view_all,
     todo_view,
-    todopost,
-    tododel,
+    todo_create,
+    todo_delete,
     todo_update
 }
