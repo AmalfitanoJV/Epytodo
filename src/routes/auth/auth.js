@@ -33,7 +33,7 @@ const login = async (req, res) => {
             res.status(500).send({msg : " internal server error " + err});
         } else if (rows[0].password == req.body.password) {
             res.status(200).send({msg : "Token of the newly logged in user"});
-        }else{
+        } else {
             res.status(200).send({msg : "INVALID CREDENTIAL"});
         }
     });
