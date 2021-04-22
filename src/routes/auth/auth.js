@@ -13,7 +13,7 @@ const register = async (req, res) => {
     db.query ("INSERT INTO user (email, password, name, firstname) VALUES (?, ?, ?, ?)", [email, password, name, firstname], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());
-            res.status(500).send({msg : " internal server error " + err});
+            res.status(500).send({msg : err.toString()});
         } else {
             console.log(fields);
             console.log(rows);
