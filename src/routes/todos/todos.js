@@ -9,7 +9,6 @@ const todo_view_all = async (req, res) => {
             console.log(err.toString());
             res.status(500).send({msg : "Token not valid"});
         } else {
-            //console.log(fields);
             res.send(rows);
             console.log(rows);
         }
@@ -24,7 +23,6 @@ const todo_view = async (req, res) => {
             res.status(500).send({msg : "Token not valid"});
         } else {
             res.send(rows);
-            console.log(fields);
             console.log(rows);
         }
     });
@@ -52,7 +50,6 @@ const todo_update = async (req, res) => {
             res.status(500).send({msg : "updating" + err});
         } else {
             res.send(rows);
-            console.log(fields);
             console.log(rows);
         }
     });
@@ -83,9 +80,7 @@ const todo_delete = async (req, res) => {
             console.log(err.toString());
             res.status(500).send({msg : "delete " + err});
         } else {
-            res.status({ msg : " succesfully deleted record number : ${req.params.id}"});
-            console.log(fields);
-            console.log(rows);
+            res.status(500).send({msg : `succesfully deleted record number : ${req.params.id}`});
         }
     });
 
