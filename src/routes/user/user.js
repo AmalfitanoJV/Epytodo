@@ -1,7 +1,15 @@
 const db = require("../../config/db").connection;
 
 const all_users_info = async (req, res) => {
-    return res.send("all_users_info\n");
+    db.query("SELECT * FROM user", (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "Token not valid"});
+        } else {
+            res.send(rows);
+            console.log(rows);
+        }
+    });
 }
 
 const user_todo = async (req, res) => {
