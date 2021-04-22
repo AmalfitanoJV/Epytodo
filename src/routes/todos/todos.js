@@ -4,12 +4,28 @@ const db = require("../../config/db").connection;
 const { decodeBase64 } = require("bcryptjs");
 
 const view_all = async (req, res) => {
-    res.send(db.query("SELECT * from todo", (err, rows, fields)));
+    db.query("SELECT * from todo", (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "Token not valid"});
+        } else {
+            console.log(fields);
+            console.log(rows);
+        }
+    });
 };
 
 const todo_view = async (req, res) => {
     const id = req.params.id;
-    res.send(db.query("SELECT id = ? from todo", [id], (err, rows, fields)));
+    db.query("SELECT id = ? from todo", [id], (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "Token not valid"});
+        } else {
+            console.log(fields);
+            console.log(rows);
+        }
+    });
 };
 
 const todo_update = async (req, res) => {
@@ -35,7 +51,6 @@ const todo_update = async (req, res) => {
         } else {
             console.log(fields);
             console.log(rows);
-            console.log(process.env.SECRET);
         }
     });
 };
@@ -54,7 +69,6 @@ const todopost = async (req, res) => {
         } else {
             console.log(fields);
             console.log(rows);
-            console.log(process.env.SECRET);
         }
     });
 };
@@ -67,7 +81,6 @@ const tododel = async (req, res) => {
         } else {
             console.log(fields);
             console.log(rows);
-            console.log(process.env.SECRET);
         }
     });
 
