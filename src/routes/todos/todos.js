@@ -79,8 +79,12 @@ const todo_delete = async (req, res) => {
             console.log(err.toString());
             res.status(500).send({msg : "delete " + err});
         } else {
+<<<<<<< HEAD
             res.status({ msg : " succesfully deleted record number : ${req.params.id}"});
             console.log(rows);
+=======
+            res.status(500).send({msg : `succesfully deleted record number : ${req.params.id}`});
+>>>>>>> cf6efcc14945313a0343933122143d3db2528892
         }
     });
 
