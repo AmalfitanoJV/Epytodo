@@ -10,6 +10,7 @@ const todo_view_all = async (req, res) => {
             res.status(500).send({msg : "Token not valid"});
         } else {
             //console.log(fields);
+            res.send(rows);
             console.log(rows);
         }
     });
@@ -19,7 +20,7 @@ const todo_view = async (req, res) => {
     const id = req.params.id;
     db.query("SELECT id = ? from todo", [id], (err, rows, fields) => {
         if (err) {
-            //console.log(err.toString());
+            console.log(err.toString());
             res.status(500).send({msg : "Token not valid"});
         } else {
             console.log(fields);
