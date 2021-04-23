@@ -26,7 +26,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    
+
     db.query ("SELECT * FROM user", [email, password], (err, rows, fields) => {
         if (err) {
             console.log(err.toString());

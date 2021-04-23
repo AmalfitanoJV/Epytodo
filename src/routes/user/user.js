@@ -13,7 +13,16 @@ const all_users_info = async (req, res) => {
 }
 
 const user_todo = async (req, res) => {
-    return res.send("user_todo\n");
+    var id = req.body.id;
+
+    db.query("SELECT id = ? FROM user", [id], (err, rows, fields) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send({msg : "user not found"});
+        } else {
+            res.send(rows);
+        }
+    });
 }
 
 const user_update = async (req, res) => {
