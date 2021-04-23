@@ -24,6 +24,7 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+    let index = 0;
     const email = req.body.email;
     const password = req.body.password;
     
@@ -31,11 +32,17 @@ const login = async (req, res) => {
         if (err) {
             console.log(err.toString());
             res.status(500).send({msg : " internal server error " + err});
-        } else if (rows[0].password == req.body.password) {
-            res.status(200).send({msg : "Token of the newly logged in user"});
-        } else {
-            res.status(200).send({msg : "INVALID CREDENTIAL"});
         }
+        for (; index < rows.length; index++) {
+            if (rows[index].password == req.body.password) {
+                res.status(200).send({msg : "Token of the newly logged in user"});    
+                return;
+            };
+        }
+        if (index == rows.length) {
+            res.status(404).json({msg: "Invalid Credentials"});
+            return;
+        };
     });
 };
 
